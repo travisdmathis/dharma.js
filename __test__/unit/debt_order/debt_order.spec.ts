@@ -11,6 +11,7 @@ import { DEBT_ORDER_PARAMS_ONE } from "./scenarios/valid_debt_order_params";
 
 // Test runners
 import { testCreate } from "./runners/create";
+import { testFill } from "./runners/fill";
 
 const provider = new Web3.providers.HttpProvider("http://localhost:8545");
 const web3 = new Web3(provider);
@@ -19,5 +20,9 @@ const dharma = new Dharma(web3.currentProvider);
 describe("Debt Order (Integration)", () => {
     describe("#create", async () => {
         await testCreate(dharma, DEBT_ORDER_PARAMS_ONE);
+    });
+
+    describe("#fill", async () => {
+        await testFill(dharma, DEBT_ORDER_PARAMS_ONE);
     });
 });
